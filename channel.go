@@ -20,8 +20,9 @@ func main(){
 
 	//do somethins for a while
 	time.Sleep(time.Duration(1) * time.Second)
-	//try time.Sleep(time.Duration(3) * time.Second)
-	fmt.Println("wait...")
+	//try time.Sleep(time.Duration(3h) * time.Second)
+	fmt.Println("waiting...")
+	//will block
 	<-c //wait for sort to finish , discard send value	
 	fmt.Println("done")
 }
