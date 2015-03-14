@@ -10,8 +10,9 @@ import (
 func holesPerGopher(gophers, holes int)(float32 , error) {
 	if gophers==0{
 		return 0, errors.New("no gophers! not allow divide by zero");
+	}else{
+		return float32(holes)/float32(gophers), nil
 	}
-	return float32(holes)/float32(gophers), nil
 	
 }
 
