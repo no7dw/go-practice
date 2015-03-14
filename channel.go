@@ -23,6 +23,6 @@ func main(){
 	//try time.Sleep(time.Duration(3h) * time.Second)
 	fmt.Println("waiting...")
 	//will block
-	<-c //wait for sort to finish , discard send value	
-	fmt.Println("done")
+	value := <-c //wait for sort to finish , discard send value	
+	fmt.Println("done", value)
 }
