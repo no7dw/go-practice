@@ -12,14 +12,14 @@ func read()(string) {
 	file, err := os.Open("ip.log") // For read access.
 	if err != nil {
 		log.Fatal(err)
-	}
-	data := make([] byte , 15)
+	}	
+	data := make([] byte , 20)	
 	count, err := file.Read(data)
 	if err != nil {
 		log.Fatal(err)
 	}
-	ip := string(data)
-	fmt.Printf("read : ", ip, count)
+	ip := string(data[:count-1])
+	fmt.Printf("read : %s %d\n", ip, count)
 	defer file.Close()
 	return "{ \"ip\":\"" + ip + "\"}" 
 
