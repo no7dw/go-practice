@@ -46,7 +46,7 @@ func iphandler(w http.ResponseWriter, r *http.Request) {
         json.Unmarshal([]byte(result), &s) 
 
         fmt.Println("save ip:",s.ServersIP)
-
+        err := os.Remove("ip.log")
         f, err := os.OpenFile("ip.log",  os.O_WRONLY|os.O_CREATE, 0666)
         if err != nil {
             fmt.Printf("Error: Can't create config file, %s\n", err)
