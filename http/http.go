@@ -11,7 +11,7 @@ import (
     "io/ioutil"  
 )
 type Server struct {
-    ServersIP string
+    IP string
 }
 func read()(string) {
     file, err := os.Open("ip.log") // For read access.
@@ -26,7 +26,7 @@ func read()(string) {
     ip := string(data[:count])
     fmt.Printf("read : %s %d\n", ip, count)
     defer file.Close()
-    return "{ \"ip\":\"" + ip + "\"}" 
+    return "{ \"IP\":\"" + ip + "\"}" 
 
 }
 func getip(w http.ResponseWriter, r *http.Request) {        
@@ -45,7 +45,7 @@ func iphandler(w http.ResponseWriter, r *http.Request) {
         var s Server;  
         json.Unmarshal([]byte(result), &s) 
 
-        fmt.Println("save ip:",s.ServersIP)
+        fmt.Println("save ip:",s.IP)
         err := os.Remove("ip.log")
         f, err := os.OpenFile("ip.log",  os.O_WRONLY|os.O_CREATE, 0666)
         if err != nil {
@@ -54,7 +54,7 @@ func iphandler(w http.ResponseWriter, r *http.Request) {
         }
         defer f.Close()
          
-        str := s.ServersIP        
+        str := s.IP        
         
         n, err := f.WriteString(str)
         if n != len(str) {
