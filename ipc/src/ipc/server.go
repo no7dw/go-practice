@@ -3,7 +3,6 @@ package ipc
 import (
 	"encoding/json"	
 	"fmt"
-	"os"
 )
 
 type Request struct {

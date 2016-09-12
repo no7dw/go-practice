@@ -8,7 +8,7 @@ type IpcClient struct {
 //undefined: IpcServer 
 func NewIpcClient(server *IpcServer) *IpcClient{
 	c := server.Connect()
-	return &IpcClient(c)
+	return &IpcClient{c}
 }
 
 func (client *IpcClient)Call(method, params string)(resp *Response, err error){
