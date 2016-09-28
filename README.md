@@ -21,3 +21,30 @@ go
 The suffix **_test** has special meaning in Go
 be careful of naming your go file
 
+### error handling
+  
+    wrong way (DRY!!):
+ 
+    ```
+    _, err = fd.Write(p0[a:b])
+    if err != nil {
+        return err
+    }
+    _, err = fd.Write(p1[c:d])
+    if err != nil {
+        return err
+    }
+    _, err = fd.Write(p2[e:f])
+    if err != nil {
+        return err
+    }
+
+    ```
+
+    ref:
+  - https://morsmachine.dk/error-handling
+  - https://astaxie.gitbooks.io/build-web-application-with-golang/content/zh/11.1.html
+  - https://www.goinggo.net/2014/10/error-handling-in-go-part-i.html
+  - https://blog.golang.org/defer-panic-and-recover
+  - https://blog.golang.org/errors-are-values
+ 
