@@ -47,4 +47,10 @@ be careful of naming your go file
   - https://www.goinggo.net/2014/10/error-handling-in-go-part-i.html
   - https://blog.golang.org/defer-panic-and-recover
   - https://blog.golang.org/errors-are-values
- 
+
+### concurrency
+
+    best documents about concurrency for starter:  
+    ref:
+    http://studygolang.com/articles/1615 
+
