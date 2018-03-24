@@ -6,14 +6,13 @@ import (
 	"gopkg.in/mgo.v2/bson"
 	"log"
 )
-
+//Name Age should be uppercase
 type Employee struct {
-	name string
-	age  int
+	Name string 
+	Age  int 
 }
 
 func main() {
-	fmt.Println("vim-go")
 	session, err := mgo.Dial("localhost:27017")
 	if err != nil {
 		panic(err)
@@ -21,9 +20,9 @@ func main() {
 	defer session.Close()
 	c := session.DB("test").C("employee")
 	result := Employee{}
-	err = c.Find(bson.M{"name": "dengwei"}).One(&result)
+	err = c.Find(bson.M{"name": "wade"}).One(&result)
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println("dengwei age: ", result)
+	fmt.Println( result)
 }
