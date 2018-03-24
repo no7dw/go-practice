@@ -7,6 +7,7 @@ import (
 	"log"
 )
 //Name Age should be uppercase
+//https://golang.org/ref/spec#Exported_identifiers
 type Employee struct {
 	Name string 
 	Age  int 
