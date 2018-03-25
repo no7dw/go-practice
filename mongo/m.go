@@ -10,8 +10,8 @@ import (
 //Name Age should be uppercase
 //https://golang.org/ref/spec#Exported_identifiers
 type Employee struct {
-	Name string
-	Age  int
+	Name string `json:"name"`
+	Age  int    `json:"age"`
 }
 
 func getDB(uri string) *mgo.Database {
