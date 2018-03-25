@@ -6,24 +6,30 @@ import (
 	"gopkg.in/mgo.v2/bson"
 	"log"
 )
+
 //Name Age should be uppercase
 //https://golang.org/ref/spec#Exported_identifiers
 type Employee struct {
-	Name string 
-	Age  int 
+	Name string
+	Age  int
 }
 
-func main() {
-	session, err := mgo.Dial("localhost:27017")
+func getDB(uri string) *mgo.Database {
+	session, err := mgo.Dial(uri)
 	if err != nil {
 		panic(err)
 	}
-	defer session.Close()
-	c := session.DB("test").C("employee")
+	//defer session.Close()
+	c := session.DB("test")
+	return c
+}
+func main() {
+	db := getDB("localhost:27017")
+	c := db.C("employee")
 	result := Employee{}
-	err = c.Find(bson.M{"name": "wade"}).One(&result)
+	err := c.Find(bson.M{"name": "wade"}).One(&result)
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println( result)
+	fmt.Println(result)
 }
