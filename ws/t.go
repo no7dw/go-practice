@@ -16,10 +16,10 @@ func main() {
 	ws, err := util.NewSafeWebSocket(Endpoint)
 	if err != nil {
 		return 
-	}
+	}		
 	data := "{'event':'addChannel','channel':'ok_sub_spot_bch_btc_ticker' }"
 	b, err := json.Marshal(data)
 	ws.Send(b)
-	result := ws.Listen(r []byte)
-    fmt.Printf(result)
+	// result := ws.Listen(r []byte)
+    // fmt.Printf(result)
 }
