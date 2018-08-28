@@ -26,7 +26,10 @@ func (e Employee) sayHi() string {
 func (e Employee) selfIntro() string {
 	return strconv.Itoa(e.age)
 }
-
+//change ref object ,so need to use pointer instead of struct object
+func (e *Employee) rename(newName string) {
+	e.name = newName
+}
 func main() {
 	p := People{"440184"}
 	e := Employee{People{"440183"},"dengwei", 32}
@@ -35,4 +38,8 @@ func main() {
 	fmt.Println(p.sayHi())
 	fmt.Println(e.sayHi())
 	fmt.Println(e.selfIntro())
+
+	fmt.Println(e1.name)
+	e1.rename("Wade")
+	fmt.Println(e1.name)
 }
