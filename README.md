@@ -59,4 +59,17 @@ be careful of naming your go file
     对于receiver 是指针的object 调用, Go会自动转换成指针
 
     [struct ref](https://github.com/astaxie/build-web-application-with-golang/blob/master/zh/02.5.md)
-    
+
+### 自动下载项目的依赖包
+
+    go get 项目会自动下载依赖包。但在git clone 项目后，具体的依赖包没安装，没有类似glide or 其他包管理的配置情况下（很多项目也并没有），可以
+
+    ```
+        go get -d -v ./...
+    ```    
+        -d标志只下载代码包，不执行安装命令；
+        -v打印详细日志和调试日志。这里加上这个标志会把每个下载的包都打印出来；
+        ./...这个表示路径，代表当前目录下所有的文件。
+
+    [ref](http://blog.cyeam.com/golang/2018/06/19/gogetdep)
+    [ref](https://golangtc.com/download/package)
