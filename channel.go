@@ -13,7 +13,7 @@ func main(){
 		c <- 1 //send a signal, whatever value
 	}()
 	//do somethins for a while
-	time.Sleep(time.Duration(1) * time.Second)
+	// time.Sleep(time.Duration(1) * time.Second)
 	fmt.Println("waiting...")
 	//will block
 	value := <-c //wait for sort to finish , discard send value	

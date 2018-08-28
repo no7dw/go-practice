@@ -10,7 +10,6 @@ func worker(workernum int, c <-chan int) {
 		fmt.Printf("%d got work\n", workernum)
 		time.Sleep(time.Duration(1) * time.Second)
 	}
-	
 }
 
 func main(){
@@ -22,7 +21,9 @@ func main(){
 	}
 
 	for i := 0; i < 10; i++ {
+		fmt.Printf("read %d channel wait\n", i)
 		c <- i //block until all is read
+		fmt.Printf("read %d channel done\n", i)
 	}
 	fmt.Println("read all channel done")
 }
