@@ -30,9 +30,9 @@ func read()(string) {
 
 }
 func getip(w http.ResponseWriter, r *http.Request) {        
-    ip := read()
+    //ip := read()
     w.Header().Set("Content-Type", "application/json")  
-    fmt.Fprint(w, ip)
+    fmt.Fprint(w, "123.222.222.111")
 }
 func iphandler(w http.ResponseWriter, r *http.Request) {
     if r.Method == "GET"{

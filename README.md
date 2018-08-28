@@ -54,3 +54,9 @@ be careful of naming your go file
     ref:
     http://studygolang.com/articles/1615 
 
+### struct & pointer
+
+    对于receiver 是指针的object 调用, Go会自动转换成指针
+
+    [struct ref](https://github.com/astaxie/build-web-application-with-golang/blob/master/zh/02.5.md)
+    
