@@ -10,11 +10,14 @@ import (
 	"github.com/go-crawler/lagou_jobs/pkg/uuid"
 	"net/url"
 	"strings"
+	"sync"
 )
 
 var (
 	jobsApiUrl = "https://www.lagou.com/jobs/positionAjax.json?city=%s&needAddtionalResult=false"
 )
+
+
 
 type ListResult struct {
 	Code    int
@@ -136,10 +139,18 @@ func  GetJobs(pn int, kd string) (*ListResult, error) {
 }
 
 func main() {
-	pagenum := 1
-	ListResult , err := GetJobs(pagenum, "区块链")
-	if err != nil {
-		fmt.Println(err)
+	var wg sync.WaitGroup
+	for pagenum := 1; pagenum < 4; pagenum++ {
+		wg.Add(1)
+		go func(pagen int ){
+			defer wg.Done()
+			ListResult , err := GetJobs(pagen, "区块链")
+			if err != nil {
+				fmt.Println(err)
+			}
+			fmt.Println(ListResult)
+			
+			}(pagenum)
+		wg.Wait()
 	}
-	fmt.Println(ListResult)
 }
