@@ -24,6 +24,11 @@ type Employee struct {
 	Age  int    `json:"age"`
 }
 
+type OrderBook struct {
+	Asks	[][]string `json:"asks"`
+	Bids [][]string `json:"bids"`
+	Pair string `json:"pair"`
+}
 var addr = flag.String("addr", "localhost:8080", "http service address")
 
 func main() {
@@ -48,7 +53,7 @@ func main() {
 		defer close(done)
 		for {
 			mt, message, err := c.ReadMessage()
-			var emp Employee
+			var emp OrderBook
 			err = json.Unmarshal(message, &emp)
 			log.Println("read:",mt, err, emp)
 			if err != nil {
