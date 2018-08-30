@@ -14,8 +14,9 @@ import (
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 	"time"
-	"encoding/binary"
-	"bytes"
+	// "encoding/binary"
+	"encoding/json"
+	// "bytes"
 	// "strconv"
 )
 type Employee struct {
@@ -90,15 +91,15 @@ func echo(w http.ResponseWriter, r *http.Request) {
 				// message += strconv.Itoa(counter)
 				// counter++
 				message := getEmpFromDB()
-				var bin_buf bytes.Buffer
-				binary.Write(&bin_buf, binary.LittleEndian, message)
-
-				err = c.WriteMessage(mt, bin_buf.Bytes())
+				// var bin_buf bytes.Buffer
+				// binary.Write(&bin_buf, binary.LittleEndian, message)
+				bin_buf, err := json.Marshal(message)
+				err = c.WriteMessage(mt, bin_buf)
 				if err != nil {
-					log.Println("write:", err)
+					log.Println("write:" , message , bin_buf, err)
 					break
 				}
-				log.Println("write:" , message)
+				log.Println("write:" , message , bin_buf, err)
 		}
 	}
 }

@@ -48,15 +48,13 @@ func main() {
 		defer close(done)
 		for {
 			mt, message, err := c.ReadMessage()
-			log.Println("read:", err, message, mt)
 			var emp Employee
 			err = json.Unmarshal(message, &emp)
+			log.Println("read:",mt, err, emp)
 			if err != nil {
-				log.Println("read:", err, mt)
 				return
 			}
 			// log.Printf("recv: %s", string(message[:]))
-			log.Printf("recv", emp)
 		}
 	}()
 
