@@ -129,7 +129,7 @@ be careful of naming your go file
             ```
                 import "fmt"
                 a := 123
-	            s := fmt.Sprintf("%d", a)
+	        s := fmt.Sprintf("%d", a)
             ```
 
             ```
@@ -140,6 +140,12 @@ be careful of naming your go file
             ```
          [string convert]
          [convert](https://yourbasic.org/golang/convert-int-to-string/)   
+
+	- byte array to string
+	
+	```
+		str := fmt.Sprintf("%s", byteArray)
+	```
          
 
 
